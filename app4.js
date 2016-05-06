@@ -57,6 +57,11 @@ function GetBookById(id) {
     var allBooks = GetAllBooks();
     return allBooks.filter(function (book) { return book.id === id; })[0];
 }
+function CreateCustomerID(name, id) {
+    return name + id;
+}
+var myID = CreateCustomerID('daniel', 10);
+console.log(myID);
 var fictionBooks = GetBookTitlesByCategory(Category.Fiction);
 fictionBooks.forEach(function (val, idx, arr) { return console.log(++idx + ' - ' + val); });
 console.log(GetBookById(2));
