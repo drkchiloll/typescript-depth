@@ -1,15 +1,15 @@
 function GetAllBooks() {
     var books = [{
-            title: 'Ulysses', author: 'James Joyce',
+            id: 1, title: 'Ulysses', author: 'James Joyce',
             availble: true, category: Category.Fiction
         }, {
-            title: 'A Farewell to Arms', author: 'Ernest Hemingway',
+            id: 2, title: 'A Farewell to Arms', author: 'Ernest Hemingway',
             available: false, category: Category.Fiction
         }, {
-            title: 'I know Why the Caged Bird Sings', author: 'Maya Angelou',
+            id: 3, title: 'I know Why the Caged Bird Sings', author: 'Maya Angelou',
             available: true, category: Category.Poetry
         }, {
-            title: 'Moby Dick', author: 'Herman Melville',
+            id: 4, title: 'Moby Dick', author: 'Herman Melville',
             available: true, category: Category.Fiction
         }];
     return books;
@@ -53,5 +53,10 @@ function LogBookTitles(titles) {
         console.log(title);
     }
 }
-var poetryBooks = GetBookTitlesByCategory(Category.Poetry);
-LogBookTitles(poetryBooks);
+function GetBookById(id) {
+    var allBooks = GetAllBooks();
+    return allBooks.filter(function (book) { return book.id === id; })[0];
+}
+var fictionBooks = GetBookTitlesByCategory(Category.Fiction);
+fictionBooks.forEach(function (val, idx, arr) { return console.log(++idx + ' - ' + val); });
+console.log(GetBookById(2));
