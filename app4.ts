@@ -78,10 +78,30 @@ function CheckoutBooks(customer: string, ...bookIDs: number[]): string[] {
   }
   return booksCheckedOut;
 }
-//***********************************************************
 
-let myBooks: string[] = CheckoutBooks('Thorne', 1, 3, 4);
-myBooks.forEach(title => console.log(title));
+function booksFilter(books, prop, bookProp): string[] {
+  return books.reduce((arr, book) => {
+    if(book[prop] === bookProp) arr.push(book.title);
+    return arr;
+  }, []);
+}
+function GetTitles(author: string): string[];
+function GetTitles(available: boolean): string[];
+function GetTitles(bookProp: any): string[] {
+  const allBooks = GetAllBooks();
+  let foundTitles: string[];
+
+  if(typeof bookProp=='string') foundTitles = booksFilter(allBooks,'author',bookProp);
+  else if(typeof bookProp=='boolean') foundTitles = booksFilter(allBooks,'available',bookProp);
+  return foundTitles;
+}
+//***********************************************************
+let checkedOutBooks = GetTitles('Herman Melville');
+checkedOutBooks.forEach(title => console.log(title));
+
+
+// let myBooks: string[] = CheckoutBooks('Thorne', 1, 3, 4);
+// myBooks.forEach(title => console.log(title));
 
 // LogFirstAvailable();
 

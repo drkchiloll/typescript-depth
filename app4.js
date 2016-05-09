@@ -84,5 +84,21 @@ function CheckoutBooks(customer) {
     }
     return booksCheckedOut;
 }
-var myBooks = CheckoutBooks('Thorne', 1, 3, 4);
-myBooks.forEach(function (title) { return console.log(title); });
+function booksFilter(books, prop, bookProp) {
+    return books.reduce(function (arr, book) {
+        if (book[prop] === bookProp)
+            arr.push(book.title);
+        return arr;
+    }, []);
+}
+function GetTitles(bookProp) {
+    var allBooks = GetAllBooks();
+    var foundTitles;
+    if (typeof bookProp == 'string')
+        foundTitles = booksFilter(allBooks, 'author', bookProp);
+    else if (typeof bookProp == 'boolean')
+        foundTitles = booksFilter(allBooks, 'available', bookProp);
+    return foundTitles;
+}
+var checkedOutBooks = GetTitles('Herman Melville');
+checkedOutBooks.forEach(function (title) { return console.log(title); });
