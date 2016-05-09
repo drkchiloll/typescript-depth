@@ -58,8 +58,13 @@ function GetBookById(id: number) {
 function CreateCustomerID(name: string, id: number): string {
   return name + id;
 }
+let x: number;
 
-let myID: string = CreateCustomerID('daniel', 10);
+// Function TYPE Variables
+let idGenerator: (chars: string, nums: number) => string;
+idGenerator = CreateCustomerID;
+
+let myID: string = idGenerator('daniel', 10);
 console.log(myID);
 
 // const allBooks = GetAllBooks();

@@ -60,7 +60,10 @@ function GetBookById(id) {
 function CreateCustomerID(name, id) {
     return name + id;
 }
-var myID = CreateCustomerID('daniel', 10);
+var x;
+var idGenerator;
+idGenerator = CreateCustomerID;
+var myID = idGenerator('daniel', 10);
 console.log(myID);
 var fictionBooks = GetBookTitlesByCategory(Category.Fiction);
 fictionBooks.forEach(function (val, idx, arr) { return console.log(++idx + ' - ' + val); });
