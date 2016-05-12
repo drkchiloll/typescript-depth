@@ -102,10 +102,19 @@ function PrintBook(book: Book): void {
   console.log(book.title + ' by ' + book.author);
 }
 //***********************************************************
+// Class Expressions
+let Newspaper = class extends ReferenceItem {
+  printCitation(): void {
+    console.log(`Newspaper: ${this.title}`);
+  }
+}
 
-let refBook: ReferenceItem = new Encyclopedia('WorldPedia', 1980, 10);
+let myPaper = new Newspaper('The Gazette', 2016);
+myPaper.printCitation();
+
+// let refBook: ReferenceItem = new Encyclopedia('WorldPedia', 1980, 10);
 // refBook.printItem();
-refBook.printCitation();
+// refBook.printCitation();
 
 // let ref: ReferenceItem = new ReferenceItem('Facts and Figures', 2012);
 // ref.title = 'Facts and Figures';
