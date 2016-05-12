@@ -1,7 +1,8 @@
 import { Category } from './enums';
 import { Book, Logger, Author, Librarian } from './interfaces';
-import { UniversityLibrarian, ReferenceItem, Encyclopedia } from './classes';
-import { CalculateLateFee as CalcFee, MaxBooksAllowed } from './lib/utilityFunctions';
+import { UniversityLibrarian, ReferenceItem } from './classes';
+import { CalculateLateFee as CalcFee, MaxBooksAllowed, Purge } from './lib/utilityFunctions';
+import Encyclopedia from './encyclopedia';
 
 function GetAllBooks(): Book[] {
   let books = [{
@@ -104,7 +105,27 @@ function PrintBook(book: Book): void {
 }
 //***********************************************************
 
-let fee = CalcFee(5);
+let inventory: Array<Book> = [{
+  id: 10, title: 'The C Programming Language', author: 'K & R',
+  available: true, category: Category.Software
+}, {
+  id: 11, title: 'Code Complete', author: 'Steve McConnell',
+  available: true, category: Category.Software
+}, {
+  id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.',
+  available: true, category: Category.Software
+}, {
+  id: 13, title: 'Cool autoexec.bat Scripts', author: 'C. D.',
+  available: true, category: Category.Software
+}];
+
+let purgedBooks: Array<Book> = Purge<Book>(inventory);
+console.log(purgedBooks);
+
+let purgedNums: Array<number> = Purge<number>([1,2,3,4,5]);
+console.log(purgedNums);
+
+// let fee = CalcFee(5);
 
 // Class Expressions
 // let Newspaper = class extends ReferenceItem {
