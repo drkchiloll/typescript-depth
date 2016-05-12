@@ -112,6 +112,14 @@ let Newspaper = class extends ReferenceItem {
 let myPaper = new Newspaper('The Gazette', 2016);
 myPaper.printCitation();
 
+//Another Class Expression
+class Novel extends class { title: string } {
+  mainCharacter: string;
+}
+
+let favoriteNovel = new Novel();
+// favoriteNovel.
+
 // let refBook: ReferenceItem = new Encyclopedia('WorldPedia', 1980, 10);
 // refBook.printItem();
 // refBook.printCitation();
